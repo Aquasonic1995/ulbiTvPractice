@@ -1,15 +1,13 @@
 
 <template>
-  <div class="post" v-for="post in posts" >
-    <div>{{post.id}}</div>
-    <div ><strong>Название:</strong> {{post.title}}</div>
-    <div><strong>Описание:</strong> {{post.desc}}</div>
-  </div>
+  <h3>Список постов</h3>
+  <PostItem class="post" v-for="post in posts" :post="post"/>
 </template>
 
 <script setup>
 import {productsStore} from "@/store/data";
 import {ref} from "vue";
+import PostItem from "@/components/PostItem.vue";
 
 const state = productsStore()
 const posts = ref(state.data.posts)

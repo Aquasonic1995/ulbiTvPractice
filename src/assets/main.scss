@@ -11,20 +11,20 @@ body {
 }
 
 .post {
+  display: flex;
+  justify-content: space-between;
   padding: 15px;
   border: 2px solid teal;
   margin-bottom: 15px;
 }
 
-.input {
-  width: 100%;
-  margin-top: 15px;
-  padding: 10px 15px;
-  border: 2px solid teal;
-}
+
 
 
 form{
   flex-direction: column;
   display: flex;
+}
+.content-wrapper{
+
 }

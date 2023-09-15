@@ -1,7 +1,16 @@
 import {defineStore} from "pinia";
-
+export interface dataType {
+    data:{
+        posts:Array<postType>
+    }
+}
+export interface postType{
+    id:number,
+    title:string,
+    desc:string
+}
 export const productsStore = defineStore('products', {
-    state: () => ({
+    state: ():dataType => ({
         data: {
             posts: [{
                 id: 1,

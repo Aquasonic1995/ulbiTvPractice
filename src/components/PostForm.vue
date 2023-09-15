@@ -24,5 +24,4 @@ const createPost = () =>{
   title.value=''
   desc.value=''
 }
-console.log(posts)
 </script>
