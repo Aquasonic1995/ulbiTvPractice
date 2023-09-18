@@ -5,18 +5,23 @@
     <div><strong>Название:</strong> {{ post.title }}</div>
     <div><strong>Описание:</strong> {{ post.desc }}</div>
     </div>
-    <Button >Удалить</Button>
+    <MyButton @click="deletePost">Удалить</MyButton>
   </div>
 </template>
 
 <script setup>
-import Button from "@/components/UI/Button.vue";
+import MyButton from "@/components/UI/MyButton.vue";
 
 const props = defineProps({
   post: {
     required: true
   }
 })
+const emit = defineEmits(['remove'])
+
+const deletePost = (post)=> {
+  emit("remove", post)
+}
 
 </script>
 

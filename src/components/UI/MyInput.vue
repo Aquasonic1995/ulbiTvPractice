@@ -5,10 +5,14 @@
 <script setup>
 const props = defineProps({
 modelValue:{
-  type:[String,Number]
+  type:String,
+  required:true
 }
 })
-const updateInput = (event) =>{ }
+const emit = defineEmits(['update:modelValue'])
+const updateInput = (event) =>{
+  emit("update:modelValue", event.target.value)
+}
 </script>
 
 <style lang="scss" scoped>
