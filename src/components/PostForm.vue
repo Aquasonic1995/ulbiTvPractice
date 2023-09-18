@@ -1,6 +1,7 @@
 <template>
   <div>
     <form>
+      <h3>Create Post</h3>
       <MyInput v-model="title" class="input" type="text" placeholder="Name"/>
       <MyInput v-model="desc" class="input" type="text" placeholder="Description"/>
       <MyButton @click.prevent="createPost">CreatePost</MyButton>
@@ -9,18 +10,20 @@
 </template>
 
 <script setup>
-import {productsStore} from "@/store/data";
+import {postsStore} from "@/store/data";
 import {ref} from "vue";
 
 import MyInput from "@/components/UI/MyInput.vue";
 import MyButton from "@/components/UI/MyButton.vue";
+import {storeToRefs} from "pinia";
 
 const title = ref('')
 const desc = ref('')
-const state = productsStore()
-const posts = ref(state.data.posts)
+const store = postsStore()
+const { showModal} =  storeToRefs(store)
 const createPost = () => {
-  posts.value.push({id: 4, title: title.value, desc: desc.value})
+  store.addPost({id:4,desc:desc.value, title:title.value})
+  showModal.value=false
   title.value = ''
   desc.value = ''
 }

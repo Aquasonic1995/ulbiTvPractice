@@ -1,16 +1,23 @@
-
 <template>
-  <h3>Список постов</h3>
-  <PostItem class="post" v-for="post in posts.data" :post="post" :key="post.id"/>
+  <div  v-if="data.posts.length > 0">
+  <h3 style="margin-bottom: 15px;">List of posts</h3>
+  <PostItem
+    class="post"
+    v-for="post in data.posts"
+    :post="post"
+    :key="post.id"
+    @remove="store.deletePost(post)"
+
+  />
+    </div>
+  <h4 v-else style="color: red; font-size: 30px; margin-top: 30px; ">There is no posts</h4>
 </template>
 
 <script setup>
-import {productsStore} from "@/store/data";
-import {ref} from "vue";
+import { postsStore } from "@/store/data";
 import PostItem from "@/components/PostItem.vue";
-import {storeToRefs} from "pinia";
+import { storeToRefs } from "pinia";
 
-const store = productsStore()
-const { data} = storeToRefs((store))
-
+const store = postsStore();
+const { data } = storeToRefs(store);
 </script>
